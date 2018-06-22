@@ -50,9 +50,9 @@ public class IssuePage {
         newIssuePath = linkNewIssues.get(0).getAttribute("href");
     }
 
-    public void openIssue() {
+    public boolean openIssue() {
         browser.get(newIssuePath);
-        Assert.assertTrue(browser.getTitle().contains(JiraVars.newIssueSummary));
+        return browser.getTitle().contains(JiraVars.newIssueSummary);
     }
 
     public void uploadAttachment() {
@@ -72,5 +72,9 @@ public class IssuePage {
         browser.get(attachmentLink);
 
         // https://stackoverflow.com/questions/304268/getting-a-files-md5-checksum-in-java
+    }
+
+    public String pageTitle() {
+        return browser.getTitle();
     }
 }
